@@ -1,3 +1,13 @@
 {
-  "pricingImage": "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/0d4d1ad7fe37d2f58dabdab5c6f92ea8.png"
+  "pricingImage": "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/0d4d1ad7fe37d2f58dabdab5c6f92ea8.png",
+  "flyerName": "Flyer",
+  "flyerDesc": "Grille tarifaire, événement, publicité, promotion, booking, ...",
+  "pochetteName": "Pochette Musicale",
+  "pochetteDesc": "PACKAGE — Bientôt Disponible + Disponible",
+  "logoName": "Logo",
+  "logoDesc": "Image de marque",
+  "videoAnimName": "Vidéo Animée",
+  "videoAnimDesc": "Grille tarifaire, événement, publicité, promotion, booking, ...",
+  "dossierName": "Dossier de Presse",
+  "dossierDesc": "Support de présentation professionnelle version numérique"
 }

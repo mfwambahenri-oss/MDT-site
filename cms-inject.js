@@ -70,6 +70,19 @@
             // Background CSS
             case 'bg-img':
               item.el.style.backgroundImage = 'url(' + val + ')';
+              item.el.style.backgroundSize = 'cover';
+              item.el.style.backgroundPosition = 'center';
+              break;
+
+            // Vidéo : met à jour le src de la balise <source> et recharge
+            case 'video-src':
+              var source = item.el.querySelector('source');
+              if (source && val) {
+                var vsrc = val;
+                if (vsrc.indexOf('#') === -1) vsrc += '#t=0.001';
+                source.setAttribute('src', vsrc);
+                item.el.load();
+              }
               break;
 
             // Galeries : reconstruit la grille depuis un tableau d'URLs
@@ -101,6 +114,25 @@
               if (Array.isArray(val)) {
                 item.el.innerHTML = val.map(function (src) {
                   return '<div class="invitation-item"><img src="' + src + '" alt=""/></div>';
+                }).join('');
+              }
+              break;
+
+            // Checklist ✓ : reconstruit les <li> avec le picto checkmark
+            case 'checklist':
+              if (Array.isArray(val)) {
+                item.el.innerHTML = val.map(function (text) {
+                  return '<li><span class="chk">✓</span><span>' + text + '</span></li>';
+                }).join('');
+              }
+              break;
+
+            // Galerie vidéos animées
+            case 'gallery-videos':
+              if (Array.isArray(val)) {
+                item.el.innerHTML = val.map(function (src) {
+                  var vsrc = src.indexOf('#') === -1 ? src + '#t=0.001' : src;
+                  return '<div class="anim-item"><video controls preload="metadata" playsinline><source src="' + vsrc + '" type="video/mp4"/></video></div>';
                 }).join('');
               }
               break;

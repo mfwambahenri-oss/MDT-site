@@ -24,5 +24,23 @@
       "1 vidéo complète",
       "Déplacement international"
     ]
-  }
+  },
+  "videoDvm1": "dvm1.mp4",
+  "videoDvm2": "dvm2.mp4",
+  "videoDvm3": "dvm3.mp4",
+  "checklistCreateurTitle": "Pourquoi faire appel à un créateur de contenu ?",
+  "checklistCreateur": [
+    "Format optimisé pour les réseaux sociaux",
+    "Montage rapide pour une diffusion rapide",
+    "Coût raisonnable et accessible",
+    "Immersion totale au cœur de l'événement",
+    "Appropriation des nouveaux besoins de communication"
+  ],
+  "checklistMDTTitle": "Pourquoi faire appel à MDT Event Frames ?",
+  "checklistMDT": [
+    "Une DA personnalisable et adaptée",
+    "Travail de qualité et créatif",
+    "Bilingue français et anglais",
+    "Cibles larges et variées — Événements privés, artistes, entrepreneurs, entreprises, secteur culturel"
+  ]
 }
