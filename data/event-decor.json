@@ -1,4 +1,13 @@
 {
+  "heroBg": "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/2f09fef2ef8170155cc78ffa2b955ba1.jpg",
+  "heroCategories": "Valentine's Day · Anniversaire · Shooting",
+  "heroIncluded": "Matériel — Main d'œuvre — Déplacement compris",
   "ctaPrice": "150€",
-  "ctaSub": "Sur devis uniquement"
+  "ctaSub": "Sur devis uniquement",
+  "videoMarriage": "mariage.mp4",
+  "videoDecoMarriage": "deco mariage.mp4",
+  "videoDemande": "demande.mp4",
+  "videoSaint1": "Saint1.mp4",
+  "videoSaint2": "Saint2.mp4",
+  "videoSaint3": "saint3.mp4"
 }
