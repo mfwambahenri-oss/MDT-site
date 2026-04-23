@@ -70,19 +70,6 @@
             // Background CSS
             case 'bg-img':
               item.el.style.backgroundImage = 'url(' + val + ')';
-              item.el.style.backgroundSize = 'cover';
-              item.el.style.backgroundPosition = 'center';
-              break;
-
-            // Vidéo : met à jour le src de la balise <source> et recharge
-            case 'video-src':
-              var source = item.el.querySelector('source');
-              if (source && val) {
-                var vsrc = val;
-                if (vsrc.indexOf('#') === -1) vsrc += '#t=0.001';
-                source.setAttribute('src', vsrc);
-                item.el.load();
-              }
               break;
 
             // Galeries : reconstruit la grille depuis un tableau d'URLs
