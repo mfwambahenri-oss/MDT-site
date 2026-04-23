@@ -85,3 +85,61 @@ collections:
           - label: "Email"
             name: "email"
             widget: "string"
+
+      # ── EVENT DESIGN — IMAGE TARIFAIRE ────────────
+      - name: "event-design"
+        label: "Event Design — Grille tarifaire"
+        file: "data/event-design.json"
+        fields:
+          - label: "Image de la grille tarifaire"
+            name: "pricingImage"
+            widget: "image"
+            hint: "Image affichée en bas de la page Event Design"
+
+      # ── ACCUEIL — PORTRAIT ────────────────────────
+      - name: "index"
+        label: "Accueil — Image portrait"
+        file: "data/index.json"
+        fields:
+          - label: "Photo portrait (section Bienvenue)"
+            name: "bienvenueImage"
+            widget: "image"
+            hint: "Photo affichée à droite dans la section Bienvenue"
+
+      # ── GALERIE — IMAGES ──────────────────────────
+      - name: "galerie"
+        label: "Galerie — Toutes les images"
+        file: "data/galerie.json"
+        fields:
+          - label: "Pochettes Musicales"
+            name: "pochettes"
+            widget: "list"
+            hint: "Ajoute, supprime ou réordonne les pochettes"
+            field:
+              label: "Image"
+              name: "image"
+              widget: "image"
+          - label: "Logos"
+            name: "logos"
+            widget: "list"
+            hint: "Ajoute, supprime ou réordonne les logos"
+            field:
+              label: "Image"
+              name: "image"
+              widget: "image"
+          - label: "Flyers"
+            name: "flyers"
+            widget: "list"
+            hint: "Ajoute, supprime ou réordonne les flyers"
+            field:
+              label: "Image"
+              name: "image"
+              widget: "image"
+          - label: "Invitations"
+            name: "invitations"
+            widget: "list"
+            hint: "Ajoute, supprime ou réordonne les invitations"
+            field:
+              label: "Image"
+              name: "image"
+              widget: "image"

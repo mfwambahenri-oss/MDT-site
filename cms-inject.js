@@ -2,7 +2,8 @@
  * cms-inject.js — MDT Creative House
  * Charge les données depuis /data/*.json et injecte le contenu dans la page.
  * Format data-cms : "fichier:chemin.dans.json"
- * Types : text (défaut) | list | bio | href
+ * Types : text (défaut) | list | bio | href | img-src | bg-img
+ *         gallery-pochettes | gallery-logos | gallery-flyers | gallery-invitations
  */
 (function () {
   var els = document.querySelectorAll('[data-cms]');
@@ -57,6 +58,51 @@
 
             case 'href':
               item.el.href = val;
+              break;
+
+            // Image : met à jour le src d'un <img>
+            case 'img-src':
+              if (item.el.tagName && item.el.tagName.toLowerCase() === 'img') {
+                item.el.src = val;
+              }
+              break;
+
+            // Background CSS
+            case 'bg-img':
+              item.el.style.backgroundImage = 'url(' + val + ')';
+              break;
+
+            // Galeries : reconstruit la grille depuis un tableau d'URLs
+            case 'gallery-pochettes':
+              if (Array.isArray(val)) {
+                item.el.innerHTML = val.map(function (src) {
+                  return '<div class="pochette"><img src="' + src + '" alt=""/><div class="pochette-overlay"></div></div>';
+                }).join('');
+              }
+              break;
+
+            case 'gallery-logos':
+              if (Array.isArray(val)) {
+                item.el.innerHTML = val.map(function (src) {
+                  return '<div class="logo-item"><img src="' + src + '" alt=""/></div>';
+                }).join('');
+              }
+              break;
+
+            case 'gallery-flyers':
+              if (Array.isArray(val)) {
+                item.el.innerHTML = val.map(function (src) {
+                  return '<div class="flyer-item"><img src="' + src + '" alt=""/></div>';
+                }).join('');
+              }
+              break;
+
+            case 'gallery-invitations':
+              if (Array.isArray(val)) {
+                item.el.innerHTML = val.map(function (src) {
+                  return '<div class="invitation-item"><img src="' + src + '" alt=""/></div>';
+                }).join('');
+              }
               break;
           }
         });
