@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galerie — MDT</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .galerie-wrap { background: var(--black); padding: 4rem 5% 6rem; }
+
+    /* ── SECTION TITLE ── */
+    .gal-title {
+      font-family: 'MDTSerif', serif;
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      margin-bottom: .5rem;
+    }
+
+    .gal-sub {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .62rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    /* ── MASONRY-LIKE GRID ── */
+    .pochettes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .6rem;
+      margin-bottom: 5rem;
+    }
+
+    .pochette {
+      overflow: hidden;
+      position: relative;
+    }
+    .pochette img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s, filter .4s;
+      filter: brightness(.9);
+    }
+    .pochette:hover img {
+      transform: scale(1.06);
+      filter: brightness(1);
+    }
+    .pochette:hover .pochette-overlay {
+      opacity: 1;
+    }
+    .pochette-overlay {
+      position: absolute; inset: 0;
+      border: 1px solid var(--gold-line);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    /* ── FLYERS ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .section-divider h2 {
+      font-family: 'MDTSerif', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 400;
+      color: var(--white);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .section-divider-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .flyers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .6rem;
+      margin-bottom: 5rem;
+    }
+    .flyer-item {
+      overflow: hidden;
+    }
+    .flyer-item img {
+      width: 100%;
+      display: block;
+      transition: transform .4s;
+    }
+    .flyer-item:hover img { transform: scale(1.03); }
+
+    /* ── LOGOS ── */
+    .logos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .6rem;
+      margin-bottom: 5rem;
+    }
+    .logo-item {
+      overflow: hidden;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1;
+      padding: 1.2rem;
+      border: 1px solid rgba(255,255,255,.05);
+      transition: border-color .3s;
+    }
+    .logo-item:hover { border-color: var(--gold-line); }
+    .logo-item img {
+      width: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform .4s;
+    }
+    .logo-item:hover img { transform: scale(1.06); }
+
+    /* ── INVITATIONS ── */
+    .invitations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .6rem;
+      margin-bottom: 5rem;
+    }
+    .invitation-item {
+      overflow: hidden;
+    }
+    .invitation-item img {
+      width: 100%;
+      display: block;
+      transition: transform .4s;
+    }
+    .invitation-item:hover img { transform: scale(1.03); }
+
+    /* ── VIDÉOS ANIMÉES ── */
+    .anim-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .6rem;
+      margin-bottom: 5rem;
+    }
+    .anim-item {
+      overflow: hidden;
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,.07);
+      transition: border-color .3s;
+    }
+    .anim-item:hover { border-color: var(--gold-line); }
+    .anim-item video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+      .pochettes-grid { grid-template-columns: repeat(3, 1fr); }
+      .logos-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .pochettes-grid { grid-template-columns: repeat(2, 1fr); }
+      .flyers-grid { grid-template-columns: repeat(2, 1fr); }
+      .logos-grid { grid-template-columns: repeat(2, 1fr); }
+      .invitations-grid { grid-template-columns: repeat(2, 1fr); }
+      .anim-grid { grid-template-columns: 1fr; max-width: 280px; margin-left: auto; margin-right: auto; }
+    }
+  </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo"><span class="logo-mdt">MDT</span>&nbsp;Event</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li class="has-dropdown">
+        <a href="#" class="nav-parent">
+          Nos Services <span class="nav-parent-arrow">▾</span>
+        </a>
+        <ul class="dropdown">
+          <li><a href="event-design.html">Event Design (Graphismes)</a></li>
+          <li><a href="event-frames.html">Event Frames (Content Creation)</a></li>
+          <li><a href="event-decor.html">Event Decor</a></li>
+        </ul>
+      </li>
+      <li><a href="galerie.html" class="active">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+<div class="page-wrap">
+    <div class="galerie-wrap">
+
+      <!-- POCHETTES -->
+      <div class="section-tag anim-up d1">Nos créations</div>
+      <h1 class="gal-title anim-up d2">Pochettes<br>Musicales</h1>
+      <p class="gal-sub anim-up d3">Design visuel — Identité artistique</p>
+
+      <div class="pochettes-grid anim-in">
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/e131f3e8c7761466cc6c0f0bfb471213.png" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/45d92023f85685e3f1638a755cff4f03.png" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/606d115caeb35b4100d2606940665f3d.png" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/ab728fbf3eb0e719cbb6cc0d43140def.jpg" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/7ce56ddcc2e5b300b74f27528bb6aa93.png" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/9db9aac88e6ac2ab9a7faafb360485e4.png" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/e4b15d7e08b93eac392fe4d688b48ce9.png" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/03498039470f75e6080ef1dfadd65a22.jpg" alt=""/><div class="pochette-overlay"></div></div>
+        
+      </div>
+
+   
+
+      <!-- LOGOS -->
+      <div class="section-divider">
+        <h2>Logos</h2>
+        <div class="section-divider-line"></div>
+      </div>
+      <div class="logos-grid">
+        <!-- Ajoute tes fichiers : logo1.png, logo2.png, logo3.png, logo4.png ... -->
+        <div class="flyer-item"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/514a35939e60876315f24744d9b678fd.jpg" alt=""/></div>
+        <div class="flyer-item"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/aa8425ae3c5c4995dc10e2e2108f8749.png" alt=""/></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/ff014c4e5c6e9e08c16d6f3afdfe0488.jpg" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/8a49a9a149f059afdbc79a11110024f1.png" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/ae2abc935c8c89e1e62391b1a6df1c45.png" alt=""/><div class="pochette-overlay"></div></div>
+        <div class="pochette"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/1316a4a5682eda011cdc0d980d939ade.jpg" alt=""/><div class="pochette-overlay"></div></div>
+<div class="flyer-item"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/aa8425ae3c5c4995dc10e2e2108f8749.png" alt=""/></div>
+        <div class="flyer-item"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/514a35939e60876315f24744d9b678fd.jpg" alt=""/></div>
+       
+      </div>
+      
+      <!-- flyers -->
+      <div class="section-divider">
+        <h2>flyers</h2>
+        <div class="section-divider-line"></div>
+      </div>
+      <div class="invitations-grid">
+        <!-- Ajoute tes fichiers : invitation1.jpg, invitation2.jpg, invitation3.jpg ... -->
+         <div class="flyer-item"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/1003b378e71335bc71ea0592502d8894.png" alt=""/></div>
+        <div class="flyer-item"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/d75ec15fa13a8b63fb93ead890435290.png" alt=""/></div>
+        <div class="flyer-item"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/b9e1a3cb5e01945984573b6f3458324b.png" alt=""/></div>
+        <div class="flyer-item"><img src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/8441d45287f3c98ecb959051b2abafee.png" alt=""/></div>
+      </div>
+      
+      
+
+      <!-- INVITATIONS -->
+      <div class="section-divider">
+        <h2>Invitations</h2>
+        <div class="section-divider-line"></div>
+      </div>
+      <div class="invitations-grid">
+        <!-- Ajoute tes fichiers : invitation1.jpg, invitation2.jpg, invitation3.jpg ... -->
+        <div class="invitation-item"><img src="invit1.png" alt="Invitation 1"/></div>
+        <div class="invitation-item"><img src="invit2.png" alt="Invitation 2"/></div>
+        <div class="invitation-item"><img src="invit3.png" alt="Invitation 3"/></div>
+      </div>
+
+      <!-- VIDÉOS ANIMÉES -->
+      <div class="section-divider">
+        <h2>Vidéos Animées</h2>
+        <div class="section-divider-line"></div>
+      </div>
+      <div class="anim-grid">
+        <!-- Ajoute tes fichiers : anim1.mp4, anim2.mp4, anim3.mp4 ... -->
+        <div class="anim-item">
+          <video controls preload="metadata" playsinline>
+            <source src="anim1.mp4#t=0.001" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="anim-item">
+          <video controls preload="metadata" playsinline>
+            <source src="anime2.mp4#t=0.001" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="anim-item">
+          <video controls preload="metadata" playsinline>
+            <source src="anime3.mp4#t=0.001" type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span><a href="#">Conditions et assistance</a></span>
+    <span>© 2025 MDT Creative House</span>
+    <span><a href="#">Politique de confidentialité</a></span>
+  </footer>
+  <script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MDT Event Website</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── HERO FULLSCREEN ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/2a6f99319017af30a812741cc2f53e94.jpg');
+      background-size: cover;
+      background-position: center 20%;
+      z-index: 0;
+    }
+    /* Overlay bien sombre */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.72) 0%,
+        rgba(0,0,0,.58) 35%,
+        rgba(0,0,0,.70) 65%,
+        rgba(0,0,0,.97) 100%
+      );
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      padding: 0 1.5rem;
+    }
+
+    .hero-eyebrow {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .65rem;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      margin-bottom: .3rem;
+    }
+
+    .hero-sub {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .62rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-title {
+      font-family: 'MDTSerif', serif;
+      font-size: clamp(3.8rem, 9.5vw, 8.5rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      letter-spacing: -.01em;
+    }
+
+    .hero-tagline {
+      font-family: 'MDTSerif', serif;
+      font-size: clamp(1rem, 2.2vw, 1.55rem);
+      color: rgba(255,255,255,.82);
+      font-style: italic;
+      letter-spacing: .04em;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── BOTTOM NAV STRIP ── */
+    .hero-strip {
+      position: absolute;
+      bottom: 0; left: 0; right: 0; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: stretch;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+
+    .hero-strip-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      padding: 1.15rem 1rem;
+      font-family: 'MDTSans', sans-serif;
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      border-right: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.5);
+      backdrop-filter: blur(8px);
+      transition: background .3s, color .3s;
+    }
+    .hero-strip-link:last-child { border-right: none; }
+    .hero-strip-link:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .hero-strip-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.15rem 2rem;
+      background: var(--white);
+      color: var(--black);
+      font-family: 'MDTSans', sans-serif;
+      font-weight: 700;
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .3s, color .3s;
+      white-space: nowrap;
+    }
+    .hero-strip-cta:hover {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* ── BIENVENUE ── */
+    .bienvenue {
+      background: var(--surface);
+      padding: 6rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .bvn-left {}
+
+    .bvn-tag {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .58rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .bvn-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+
+    .bvn-title {
+      font-family: 'MDTSerif', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .bvn-body {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .85rem;
+      color: rgba(237,232,222,.72);
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .bvn-why-title {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .62rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 1rem;
+    }
+
+    .bvn-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+    .bvn-list li {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .82rem;
+      color: rgba(237,232,222,.8);
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+    }
+    .bvn-list li::before {
+      content: '—';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: .1em;
+    }
+
+    /* Côté image */
+    .bvn-right {
+      position: relative;
+    }
+
+    .bvn-img-wrap {
+      position: relative;
+    }
+    .bvn-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid var(--gold-line);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bvn-img-wrap img {
+      position: relative; z-index: 1;
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+    }
+
+    /* ── POURQUOI NOUS ── */
+    .pourquoi {
+      background: var(--black);
+      padding: 6rem 5% 5rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .pourquoi-title {
+      font-family: 'MDTSerif', serif;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1.8rem;
+    }
+
+    .pourquoi-points {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .82rem;
+      color: rgba(237,232,222,.7);
+      letter-spacing: .02em;
+      line-height: 2;
+      max-width: 860px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .pourquoi-video-wrap {
+      position: relative;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .pourquoi-video-wrap::before {
+      content: '';
+      position: absolute;
+      top: -10px; left: -10px;
+      right: 10px; bottom: 10px;
+      border: 1px solid var(--gold-line);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .pourquoi-video-wrap video {
+      position: relative; z-index: 1;
+      width: 100%;
+      display: block;
+    }
+
+    /* ── SECOND IMAGE ── */
+    .img-section {
+      background: var(--black);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5rem 5%;
+    }
+
+    .img-frame {
+      position: relative;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .img-frame::before {
+      content: '';
+      position: absolute;
+      top: -10px; left: -10px;
+      right: 10px; bottom: 10px;
+      border: 1px solid var(--gold-line);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .img-frame img {
+      position: relative; z-index: 1;
+      width: 100%;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .bienvenue { grid-template-columns: 1fr; gap: 3rem; }
+      .bvn-right { order: -1; }
+      .bvn-img-wrap img { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 700px) {
+      .hero-strip { grid-template-columns: 1fr; }
+      .hero-strip-link { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+    }
+  </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo"><span class="logo-mdt">MDT</span>&nbsp;Event</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li class="has-dropdown">
+        <a href="#" class="nav-parent">
+          Nos Services <span class="nav-parent-arrow">▾</span>
+        </a>
+        <ul class="dropdown">
+          <li><a href="event-design.html">Event Design (Graphismes)</a></li>
+          <li><a href="event-frames.html">Event Frames (Content Creation)</a></li>
+          <li><a href="event-decor.html">Event Decor</a></li>
+        </ul>
+      </li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-wrap">
+
+    <div class="hero">
+      <div class="hero-bg"></div>
+
+      <div class="hero-inner">
+        <p class="hero-eyebrow anim-up d1">Online Book</p>
+        <p class="hero-sub anim-up d2">Création Visuelle · Événementiel · Décoration</p>
+        <h1 class="hero-title anim-up d3">MDT Creative House</h1>
+        <p class="hero-tagline anim-up d4">MDT Event Planner · MDT Event Frames</p>
+        <a href="contact.html" class="btn-outline anim-up d5">Nous contacter</a>
+      </div>
+
+      <div class="hero-strip">
+        <a href="event-design.html" class="hero-strip-link">Event Design &nbsp;→</a>
+        <a href="event-decor.html" class="hero-strip-cta">Event Decor &nbsp;→</a>
+        <a href="event-frames.html" class="hero-strip-link">Event Frames &nbsp;→</a>
+      </div>
+    </div>
+
+    <!-- BIENVENUE -->
+    <div class="bienvenue">
+      <div class="bvn-left anim-up d1">
+        <p class="bvn-tag">Présentation</p>
+        <h2 class="bvn-title">Bienvenue chez<br>MDT Creative House</h2>
+        <p class="bvn-body">
+          Votre structure basée en région parisienne, spécialisée dans la création de contenu,
+          le design visuel et la décoration de chambre.<br><br>
+          N'hésitez pas à activer le son des vidéos pour une expérience immersive !
+        </p>
+        <p class="bvn-why-title">Pourquoi faire appel à nous ?</p>
+        <ul class="bvn-list">
+          <li>Une double expertise événementielle et créative</li>
+          <li>Des contenus pensés pour les réseaux sociaux</li>
+          <li>Un travail soigné et personnalisé</li>
+          <li>Une conception théorique et pratique</li>
+        </ul>
+      </div>
+      <div class="bvn-right anim-in d2">
+        <div class="bvn-img-wrap">
+          <img
+            src="https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/621dbafb7fe2fc56ebe18acd0ebb8730.png"
+            alt="MDT Creative House Logo"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- POURQUOI NOUS -->
+    <div class="pourquoi">
+      <h2 class="pourquoi-title anim-up d1">Pourquoi faire appel à nous ?</h2>
+      <p class="pourquoi-points anim-up d2">
+        Une double expertise événementielle et créative &nbsp;·&nbsp;
+        Des contenus pensés pour les réseaux sociaux &nbsp;·&nbsp;
+        Un travail soigné et personnalisé &nbsp;·&nbsp;
+        Une conception théorique et pratique
+      </p>
+      <div class="pourquoi-video-wrap anim-in d3">
+        <video controls preload="metadata" playsinline>
+          <source src="Accueil.mp4#t=0.001" type="video/mp4"/>
+        </video>
+      </div>
+    </div>
+
+
+  </div>
+
+  <footer>
+    <span><a href="#">Conditions et assistance</a></span>
+    <span>© 2025 MDT Creative House · Région parisienne</span>
+    <span><a href="#">Politique de confidentialité</a></span>
+  </footer>
+  <script src="nav.js"></script>
+</body>
+</html>

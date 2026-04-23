@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Frames (Content Creation) — MDT</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── HERO BOKEH ── */
+    .ef-hero {
+      position: relative;
+      padding: 6rem 5% 5rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .ef-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/45e0418876501997607588b6732d82c3.png');
+      background-size: cover;
+      background-position: center;
+      opacity: .2; z-index: 0;
+    }
+    .ef-hero > * { position: relative; z-index: 1; }
+
+    /* ── QUESTIONS ── */
+    .question-block {
+      max-width: 720px;
+      margin: 0 auto 4.5rem;
+    }
+    .question-title {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 2.2rem;
+    }
+
+    /* Animation par item */
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-28px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      font-family: 'MDTSans', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.9);
+      text-align: left;
+      /* animation staggerée par item */
+      opacity: 0;
+      animation: slideInLeft .55s cubic-bezier(.25,.46,.45,.94) forwards;
+    }
+
+    /* délais staggerés */
+    .check-list li:nth-child(1) { animation-delay: .15s; }
+    .check-list li:nth-child(2) { animation-delay: .28s; }
+    .check-list li:nth-child(3) { animation-delay: .41s; }
+    .check-list li:nth-child(4) { animation-delay: .54s; }
+    .check-list li:nth-child(5) { animation-delay: .67s; }
+    .check-list li:nth-child(6) { animation-delay: .80s; }
+
+    .chk {
+      color: var(--gold);
+      font-size: 1.4rem;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    /* ── PACKS ── */
+    .packs-section {
+      background: var(--surface);
+      padding: 5rem 5%;
+    }
+    .packs-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .packs-header h2 {
+      font-family: 'MDTSerif', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    .packs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .pack {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,.07);
+      padding: 2.5rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .3s, transform .3s;
+    }
+    .pack:hover { border-color: var(--gold-line); transform: translateY(-5px); }
+
+    .pack-tier {
+      font-size: .58rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .3rem;
+    }
+    .pack-name {
+      font-family: 'MDTSerif', serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .pack-price {
+      font-family: 'MDTSerif', serif;
+      font-size: 3rem;
+      color: var(--white);
+      margin: 1rem 0;
+    }
+    .pack-hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 1.5rem;
+    }
+    .pack-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      flex: 1;
+      margin-bottom: 2rem;
+    }
+    .pack-features li {
+      font-size: .8rem;
+      color: rgba(237,232,222,.65);
+      padding-left: 1rem;
+      position: relative;
+    }
+    .pack-features li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--gold);
+    }
+    .pack-cta {
+      font-family: 'MDTSans', sans-serif;
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--gold);
+      transition: color .25s;
+      align-self: flex-start;
+    }
+    .pack-cta:hover { color: var(--gold); }
+
+    /* ── DVM SHOW ── */
+    .dvm-section {
+      background: var(--black);
+      padding: 5rem 5%;
+      text-align: center;
+    }
+    .dvm-title {
+      font-family: 'MDTSerif', serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: .18em;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 3.5rem;
+    }
+
+    .dvm-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .dvm-video-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,.07);
+      transition: border-color .3s;
+    }
+    .dvm-video-wrap:hover { border-color: var(--gold-line); }
+
+    .dvm-video-wrap video {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .dvm-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+      .packs-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .check-list li { font-size: .95rem; }
+    }
+  </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo"><span class="logo-mdt">MDT</span>&nbsp;Event</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li class="has-dropdown">
+        <a href="#" class="nav-parent active">
+          Nos Services <span class="nav-parent-arrow">▾</span>
+        </a>
+        <ul class="dropdown">
+          <li><a href="event-design.html">Event Design (Graphismes)</a></li>
+          <li><a href="event-frames.html" class="active">Event Frames (Content Creation)</a></li>
+          <li><a href="event-decor.html">Event Decor</a></li>
+        </ul>
+      </li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- HERO BOKEH + CHECKLISTS -->
+    <div class="ef-hero">
+      <div class="ef-hero-bg"></div>
+
+      <div class="question-block">
+        <p class="question-title">Pourquoi faire appel à un créateur de contenu ?</p>
+        <ul class="check-list">
+          <li><span class="chk">✓</span><span><strong>Format optimisé</strong> pour les réseaux sociaux</span></li>
+          <li><span class="chk">✓</span><span><strong>Montage rapide</strong> pour une diffusion rapide</span></li>
+          <li><span class="chk">✓</span><span><strong>Coût raisonnable</strong> et accessible</span></li>
+          <li><span class="chk">✓</span><span><strong>Immersion totale</strong> au cœur de l'événement</span></li>
+          <li><span class="chk">✓</span><span>Appropriation des <strong>nouveaux besoins de communication</strong></span></li>
+        </ul>
+      </div>
+
+      <div class="question-block">
+        <p class="question-title">Pourquoi faire appel à MDT Event Frames ?</p>
+        <ul class="check-list">
+          <li><span class="chk">✓</span><span><strong>Une DA personnalisable</strong> et adaptée</span></li>
+          <li><span class="chk">✓</span><span><strong>Travail de qualité</strong> et créatif</span></li>
+          <li><span class="chk">✓</span><span><strong>Bilingue</strong> français et anglais</span></li>
+          <li><span class="chk">✓</span><span><strong>Cibles larges</strong> et variées<br>
+            <small style="font-size:.78rem;color:var(--muted);">Événements privés, artistes, entrepreneurs, entreprises, secteur culturel</small>
+          </span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PACKS (juste après les checklists) -->
+    <div class="packs-section">
+      <div class="packs-header">
+        <div class="section-tag" style="justify-content:center;"><span style="display:none;"></span>Nos formules</div>
+        <h2>Event Frames</h2>
+      </div>
+      <div class="packs-grid">
+        <div class="pack anim-up d1">
+          <p class="pack-tier">Pack</p>
+          <h3 class="pack-name">Starter</h3>
+          <div class="pack-price" data-cms="event-frames:starter.price">180€</div>
+          <hr class="pack-hr"/>
+          <ul class="pack-features" data-cms="event-frames:starter.features" data-cms-type="list">
+            <li>2h de présence</li>
+            <li>1 vidéo format Réseaux sociaux</li>
+            <li>Recommandation Projet simple</li>
+          </ul>
+          <a href="contact.html" class="pack-cta">Réserver →</a>
+        </div>
+        <div class="pack anim-up d2" style="border-color:var(--gold-line);">
+          <p class="pack-tier">Pack</p>
+          <h3 class="pack-name">Premium</h3>
+          <div class="pack-price" data-cms="event-frames:premium.price">350€</div>
+          <hr class="pack-hr"/>
+          <ul class="pack-features" data-cms="event-frames:premium.features" data-cms-type="list">
+            <li>4h de présence</li>
+            <li>Captation de moments clés</li>
+            <li>2 vidéos format Réseaux sociaux</li>
+          </ul>
+          <a href="contact.html" class="pack-cta">Réserver →</a>
+        </div>
+        <div class="pack anim-up d3">
+          <p class="pack-tier">Pack</p>
+          <h3 class="pack-name">VIP</h3>
+          <div class="pack-price" data-cms="event-frames:vip.price">500€</div>
+          <hr class="pack-hr"/>
+          <ul class="pack-features" data-cms="event-frames:vip.features" data-cms-type="list">
+            <li>Présence journée entière</li>
+            <li>Captation complète</li>
+            <li>1 vidéo Réseaux sociaux</li>
+            <li>1 vidéo complète</li>
+            <li>Déplacement international</li>
+          </ul>
+          <a href="contact.html" class="pack-cta">Réserver →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DVM SHOW (en dernier) -->
+    <div class="dvm-section">
+      <h2 class="dvm-title anim-up d1">DVM &nbsp; SHOW</h2>
+      <div class="dvm-grid">
+        <div class="dvm-video-wrap">
+          <video controls preload="metadata" playsinline>
+            <source src="dvm1.mp4#t=0.001" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="dvm-video-wrap">
+          <video controls preload="metadata" playsinline>
+            <source src="dvm2.mp4#t=0.001" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="dvm-video-wrap">
+          <video controls preload="metadata" playsinline>
+            <source src="dvm3.mp4#t=0.001" type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span><a href="#">Conditions et assistance</a></span>
+    <span>© 2025 MDT Creative House</span>
+    <span><a href="#">Politique de confidentialité</a></span>
+  </footer>
+  <script src="cms-inject.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

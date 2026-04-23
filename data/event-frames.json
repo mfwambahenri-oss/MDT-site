@@ -1,0 +1,28 @@
+{
+  "starter": {
+    "price": "180€",
+    "features": [
+      "2h de présence",
+      "1 vidéo format Réseaux sociaux",
+      "Recommandation Projet simple"
+    ]
+  },
+  "premium": {
+    "price": "350€",
+    "features": [
+      "4h de présence",
+      "Captation de moments clés",
+      "2 vidéos format Réseaux sociaux"
+    ]
+  },
+  "vip": {
+    "price": "500€",
+    "features": [
+      "Présence journée entière",
+      "Captation complète",
+      "1 vidéo Réseaux sociaux",
+      "1 vidéo complète",
+      "Déplacement international"
+    ]
+  }
+}

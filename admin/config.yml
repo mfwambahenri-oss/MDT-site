@@ -1,0 +1,87 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "media"
+public_folder: "/media"
+
+locale: fr
+
+collections:
+  - name: "contenu"
+    label: "Contenu du site"
+    files:
+
+      # ── EVENT FRAMES — PACKS ──────────────────────
+      - name: "event-frames"
+        label: "Event Frames — Packs & Tarifs"
+        file: "data/event-frames.json"
+        fields:
+          - label: "Pack Starter"
+            name: "starter"
+            widget: "object"
+            fields:
+              - label: "Prix"
+                name: "price"
+                widget: "string"
+                hint: "Ex : 180€"
+              - label: "Prestations incluses"
+                name: "features"
+                widget: "list"
+                hint: "Une prestation par ligne"
+          - label: "Pack Premium"
+            name: "premium"
+            widget: "object"
+            fields:
+              - label: "Prix"
+                name: "price"
+                widget: "string"
+                hint: "Ex : 350€"
+              - label: "Prestations incluses"
+                name: "features"
+                widget: "list"
+          - label: "Pack VIP"
+            name: "vip"
+            widget: "object"
+            fields:
+              - label: "Prix"
+                name: "price"
+                widget: "string"
+                hint: "Ex : 500€"
+              - label: "Prestations incluses"
+                name: "features"
+                widget: "list"
+
+      # ── EVENT DECOR — TARIF ───────────────────────
+      - name: "event-decor"
+        label: "Event Decor — Tarif"
+        file: "data/event-decor.json"
+        fields:
+          - label: "Prix affiché (ex : 150€)"
+            name: "ctaPrice"
+            widget: "string"
+          - label: "Sous-titre"
+            name: "ctaSub"
+            widget: "string"
+
+      # ── CONTACT — BIO & RÉSEAUX ───────────────────
+      - name: "contact"
+        label: "Contact — Bio & Réseaux sociaux"
+        file: "data/contact.json"
+        fields:
+          - label: "Paragraphes de la bio"
+            name: "bio"
+            widget: "list"
+            hint: "Un paragraphe par ligne"
+          - label: "Instagram — compte (ex : Mdt.Event)"
+            name: "instagramHandle"
+            widget: "string"
+          - label: "Instagram — lien"
+            name: "instagramUrl"
+            widget: "string"
+          - label: "Snapchat — compte"
+            name: "snapchatHandle"
+            widget: "string"
+          - label: "Email"
+            name: "email"
+            widget: "string"
