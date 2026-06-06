@@ -71,7 +71,6 @@
             case 'bg-img':
               item.el.style.backgroundImage = 'url(' + val + ')';
               item.el.style.backgroundSize = 'cover';
-              item.el.style.backgroundPosition = 'center';
               break;
 
             // Vidéo : met à jour le src de la balise <source> et recharge

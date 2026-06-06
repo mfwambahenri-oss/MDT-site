@@ -1,13 +1,10 @@
 {
+  "pochettesSub": "Design visuel — Identité artistique",
   "pochettes": [
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/e131f3e8c7761466cc6c0f0bfb471213.png",
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/45d92023f85685e3f1638a755cff4f03.png",
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/606d115caeb35b4100d2606940665f3d.png",
-    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/ab728fbf3eb0e719cbb6cc0d43140def.jpg",
-    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/7ce56ddcc2e5b300b74f27528bb6aa93.png",
-    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/9db9aac88e6ac2ab9a7faafb360485e4.png",
-    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/e4b15d7e08b93eac392fe4d688b48ce9.png",
-    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/03498039470f75e6080ef1dfadd65a22.jpg"
+    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/ab728fbf3eb0e719cbb6cc0d43140def.jpg"
   ],
   "logos": [
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/514a35939e60876315f24744d9b678fd.jpg",
@@ -15,23 +12,37 @@
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/ff014c4e5c6e9e08c16d6f3afdfe0488.jpg",
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/8a49a9a149f059afdbc79a11110024f1.png",
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/ae2abc935c8c89e1e62391b1a6df1c45.png",
-    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/1316a4a5682eda011cdc0d980d939ade.jpg"
+    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/1316a4a5682eda011cdc0d980d939ade.jpg",
+    "media/2D0B080F-69E6-432B-A7D0-822921451AB3.png",
+    "media/4E6D5805-7CB7-4286-9AA2-BA422C345D30.png",
+    "media/9907AD5A-7DF0-453C-AEBE-9F49E21B4A28.png",
+    "media/E27DE1D2-1218-49AA-B478-0A8614764018.png",
+    "media/GK Logos.png",
+    "media/IMG_9580.jpeg",
+    "media/LOGO BATSHu.png"
   ],
   "flyers": [
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/1003b378e71335bc71ea0592502d8894.png",
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/d75ec15fa13a8b63fb93ead890435290.png",
     "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/b9e1a3cb5e01945984573b6f3458324b.png",
-    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/8441d45287f3c98ecb959051b2abafee.png"
+    "https://cindymendes.my.canva.site/mdtcreativehouse/_assets/media/8441d45287f3c98ecb959051b2abafee.png",
+    "media/Flyer Tayron.png",
+    "media/20.05.png",
+    "media/Affiche Coaching Sportif moderne photo blanc vert fluo.png",
+    "media/Black White Minimalist Business Workshop Instagram Post.png",
+    "media/Colorful Blue and Brown Summer Beach Party Poster.png",
+    "media/Copie de OhJay SDM.png",
+    "media/MKZ Dates Juin.png",
+    "media/WinTrill.png"
   ],
   "invitations": [
-    "invit1.png",
-    "invit2.png",
-    "invit3.png"
+    "media/invit1.png",
+    "media/invit2.png",
+    "media/invit3.png"
   ],
-  "pochettesSub": "Design visuel — Identité artistique",
   "animatedVideos": [
-    "anim1.mp4",
-    "anime2.mp4",
-    "anime3.mp4"
+    "/media/anim1.mp4",
+    "/media/anime2.mp4",
+    "/media/anime3.mp4"
   ]
 }
