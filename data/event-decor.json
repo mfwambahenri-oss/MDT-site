@@ -4,12 +4,12 @@
   "heroIncluded": "Matériel — Main d'œuvre — Déplacement compris",
   "ctaPrice": "150€",
   "ctaSub": "Sur devis uniquement",
-  "videoMarriage": "mariage.mp4",
-  "videoDecoMarriage": "deco mariage.mp4",
-  "videoDemande": "demande.mp4",
-  "videoSaint1": "Saint1.mp4",
-  "videoSaint2": "Saint2.mp4",
-  "videoSaint3": "saint3.mp4",
+  "videoMarriage": "/media/mariage.mp4",
+  "videoDecoMarriage": "/media/deco mariage.mp4",
+  "videoDemande": "/media/demande.mp4",
+  "videoSaint1": "/media/Saint1.mp4",
+  "videoSaint2": "/media/Saint2.mp4",
+  "videoSaint3": "/media/saint3.mp4",
   "saintValTitle": "Décorations Saint-Valentin",
   "ctaFrom": "À partir de"
 }
